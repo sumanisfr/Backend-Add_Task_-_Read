@@ -159,7 +159,7 @@ Task-Manager-Pro/
 
 ### 🏠 Dashboard View
 *Beautiful task overview with glassmorphism cards*
-mkdir -p assets/![image](https://github.com/user-attachments/assets/d884c303-ebab-4603-9f8a-db5521fc0c2f)
+!mkdir -p assets/[image](https://github.com/user-attachments/assets/d884c303-ebab-4603-9f8a-db5521fc0c2f)
 
 
 ### 📝 Task Creation
