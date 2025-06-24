@@ -2,14 +2,62 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-zinc-900 text-white min-h-screen p-10">
-    <h1 class="text-3xl font-bold mb-4"><%= title %></h1>
-    <pre class="bg-zinc-800 p-5 rounded"><%= content %></pre>
-    <a class="text-blue-400 underline mt-4 inline-block" href="/">← Back</a>
+  <body
+    class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white min-h-screen p-4 md:p-10"
+  >
+    <div class="max-w-4xl mx-auto">
+      <h1
+        class="text-3xl md:text-4xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+      >
+        <%= title %>
+      </h1>
+
+      <div
+        class="bg-slate-800/50 backdrop-blur-sm p-4 md:p-8 rounded-xl border border-slate-700 shadow-2xl mb-8"
+      >
+        <div
+          class="text-gray-300 whitespace-pre-wrap break-words text-sm md:text-base leading-relaxed"
+        >
+          <%= content %>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href="/"
+          class="group relative px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 text-center"
+        >
+          <span class="relative z-10">← Back</span>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></div>
+        </a>
+
+        <a
+          href="/edit/<%= encodeURIComponent(title) %>"
+          class="group relative px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/25 active:scale-95 text-center"
+        >
+          <span class="relative z-10">✏️ Edit Note</span>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></div>
+        </a>
+
+        <a
+          href="/delete/<%= encodeURIComponent(title) %>"
+          class="group relative px-6 py-3 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25 active:scale-95 text-center"
+          onclick="return confirm('Are you sure you want to delete this note?')"
+        >
+          <span class="relative z-10">🗑️ Delete Note</span>
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-red-600 to-pink-600 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></div>
+        </a>
+      </div>
+    </div>
   </body>
 </html>
-<!-- This is a simple read view for displaying the content of a note -->
-<!-- The title and content are dynamically inserted into the HTML -->

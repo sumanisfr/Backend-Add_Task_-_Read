@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit File</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              orbitron: ["Orbitron", "monospace"],
+            },
+            animation: {
+              "pulse-glow": "pulse-glow 2s infinite",
+              "border-rotate": "border-rotate 3s linear infinite",
+              shine: "shine 0.5s ease-in-out",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      @keyframes border-rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes shine {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .grid-overlay::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent 98%, #00ff88 100%),
+          linear-gradient(0deg, transparent 98%, #00ff88 100%);
+        background-size: 50px 50px;
+        opacity: 0.1;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .rotating-border::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #00ff88, #0088ff, #ff0088, #00ff88);
+        border-radius: 20px;
+        z-index: -1;
+        animation: border-rotate 3s linear infinite;
+      }
+
+      .shine-effect::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .shine-effect:hover::before {
+        left: 100%;
+      }
+    </style>
+  </head>
+  <body
+    class="font-orbitron bg-black min-h-screen p-5 overflow-x-hidden grid-overlay"
+    style="
+      background-image: radial-gradient(
+          circle at 25% 25%,
+          #1a1a2e 0%,
+          transparent 50%
+        ),
+        radial-gradient(circle at 75% 75%, #16213e 0%, transparent 50%),
+        linear-gradient(45deg, #0f0f23, #1a1a2e, #16213e);
+    "
+  >
+    <form
+      action="/edit/<%= title %>"
+      method="POST"
+      class="max-w-3xl mx-auto bg-black bg-opacity-80 p-10 rounded-3xl border-2 border-green-400 relative z-10 rotating-border backdrop-blur-sm"
+      style="
+        box-shadow: 0 0 30px rgba(0, 255, 136, 0.3),
+          inset 0 0 30px rgba(0, 255, 136, 0.05);
+      "
+    >
+      <textarea
+        name="details"
+        placeholder="Enter your code..."
+        class="w-full min-h-80 bg-blue-900 bg-opacity-90 text-green-400 border border-green-400 rounded-xl p-5 text-sm font-orbitron resize-y transition-all duration-300 focus:outline-none focus:border-blue-400 focus:text-blue-400 placeholder-green-400 placeholder-opacity-50"
+        style="
+          box-shadow: 0 0 20px rgba(0, 255, 136, 0.2),
+            inset 0 0 20px rgba(0, 255, 136, 0.05);
+          background-color: rgba(0, 20, 40, 0.9);
+        "
+        onfocus="this.style.boxShadow='0 0 30px rgba(0, 136, 255, 0.5), inset 0 0 20px rgba(0, 136, 255, 0.1)'"
+        onblur="this.style.boxShadow='0 0 20px rgba(0, 255, 136, 0.2), inset 0 0 20px rgba(0, 255, 136, 0.05)'"
+      >
+<%= content %></textarea
+      >
+
+      <button
+        type="submit"
+        class="block mx-auto mt-5 bg-gradient-to-r from-green-400 to-blue-400 text-black font-bold text-base uppercase tracking-wider py-4 px-10 rounded-full cursor-pointer transition-all duration-300 relative overflow-hidden shine-effect hover:-translate-y-1 hover:shadow-lg active:-translate-y-0"
+        style="
+          box-shadow: 0 0 30px rgba(0, 255, 136, 0.5),
+            inset 0 0 20px rgba(255, 255, 255, 0.1);
+        "
+        onmouseover="this.style.boxShadow='0 0 40px rgba(0, 255, 136, 0.8), 0 10px 30px rgba(0, 255, 136, 0.3)'; this.style.background='linear-gradient(45deg, #0088ff, #00ff88)'"
+        onmouseout="this.style.boxShadow='0 0 30px rgba(0, 255, 136, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.1)'; this.style.background='linear-gradient(45deg, #00ff88, #0088ff)'"
+        onmousedown="this.style.boxShadow='0 0 25px rgba(0, 255, 136, 0.6), 0 5px 20px rgba(0, 255, 136, 0.2)'"
+        onmouseup="this.style.boxShadow='0 0 40px rgba(0, 255, 136, 0.8), 0 10px 30px rgba(0, 255, 136, 0.3)'"
+      >
+        ⚡ Save File
+      </button>
+    </form>
+  </body>
+</html>

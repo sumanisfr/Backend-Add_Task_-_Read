@@ -3,48 +3,179 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="/stylesheets/style.css" /> -->
+    <title>Task Manager</title>
     <script src="/javascripts/script.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div class="main w-full min-h-screen bg-zinc-900">
-      <div class="form p-10" text-white>
-        <form action="/create" method="post">
-          <input
-            class="block w-full rounded-md outline-none px-5 py-2 bg-zinc-800"
-            type="text"
-            placeholder="Enter your note"
-            name="title"
-          />
-          <textarea
-            class="block w-full rounded-md outline-none mt-2 px-5 py-2 bg-zinc-800"
-            placeholder="write your task Details"
-            resize="none"
-            class="rounded-lg"
-            name="details"
-          ></textarea>
-          <input
-            class="mt-2 bg-blue-600 px-5 py-2 rounded"
-            type="Submit"
-            value="Add Task"
-          />
-        </form>
+    <div
+      class="main w-full min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 animate-gradient-x"
+    >
+      <!-- Header -->
+      <div class="header text-center py-8 animate-fade-in">
+        <h1
+          class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 mb-2 animate-pulse"
+        >
+          Task Manager
+        </h1>
+        <p class="text-gray-300 text-lg animate-bounce">
+          Organize your tasks efficiently
+        </p>
       </div>
 
-      <div class="tasks flex gap-3 flex-wrap-10">
-        <% if(files.length > 0){ %> <% files.forEach(function(val) { %>
-        <div class="task w-72 bg-zinc-800 rounded-lg p-5 m-5">
-          <h1 class="text-white text-3xl font-bold"><%= val %></h1>
-          <a class="text-blue-500 hover:underline" href="/read/<%= val %>"
-            >Read More</a
-          >
+      <!-- Form Section -->
+      <div class="form max-w-2xl mx-auto p-6 animate-slide-up">
+        <div
+          class="bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-2xl p-8 border border-gray-700/50 hover:shadow-cyan-500/25 transition-all duration-500 hover:bg-gray-800/90"
+        >
+          <h2 class="text-2xl font-semibold text-white mb-6 flex items-center">
+            <span
+              class="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mr-3 flex items-center justify-center text-sm"
+              >+</span
+            >
+            Add New Task
+          </h2>
+          <form action="/create" method="post" class="space-y-4">
+            <input
+              class="block w-full rounded-lg outline-none px-5 py-3 bg-gray-700/80 text-white placeholder-gray-400 border border-gray-600 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50 transition-all duration-300 hover:bg-gray-700/90 focus:scale-105"
+              type="text"
+              placeholder="Enter your task title"
+              name="title"
+              required
+            />
+            <textarea
+              class="block w-full rounded-lg outline-none px-5 py-3 bg-gray-700/80 text-white placeholder-gray-400 border border-gray-600 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/50 transition-all duration-300 resize-none h-32 hover:bg-gray-700/90 focus:scale-105"
+              placeholder="Write your task details..."
+              name="details"
+              required
+            ></textarea>
+            <button
+              class="w-full bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-700 hover:to-blue-800 px-6 py-3 rounded-lg text-white font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 active:scale-95"
+              type="submit"
+            >
+              <span class="flex items-center justify-center">
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  ></path>
+                </svg>
+                Add Task
+              </span>
+            </button>
+          </form>
         </div>
-        <% }) %> <% } else { %>
-        <h3 class="text-red-800">no tasks yet.</h3>
-        <% } %>
+      </div>
+
+      <!-- Tasks Section -->
+      <div class="tasks-container max-w-7xl mx-auto px-6 pb-10">
+        <h2
+          class="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 mb-8 text-center animate-fade-in"
+        >
+          Your Tasks
+        </h2>
+        <div class="tasks grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <% if(files.length > 0){ %> <% files.forEach(function(val, index) { %>
+          <div
+            class="task bg-gray-800/70 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-700/50 hover:border-cyan-500/50 hover:scale-102 transition-all duration-200 hover:shadow-lg hover:shadow-cyan-500/10 group"
+          >
+            <div class="flex items-center mb-3">
+              <div
+                class="w-3 h-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mr-3 animate-pulse"
+              ></div>
+              <h3
+                class="text-white text-xl font-bold line-clamp-2 group-hover:text-cyan-300 transition-colors"
+              >
+                <%= val %>
+              </h3>
+            </div>
+            <div class="flex justify-between items-center mt-4">
+              <a
+                class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-cyan-600/20 to-blue-600/20 hover:from-cyan-600/40 hover:to-blue-600/40 text-cyan-400 hover:text-cyan-300 font-medium rounded-lg transition-all duration-300 border border-cyan-500/30 hover:border-cyan-400/50"
+                href="/read/<%= val %>"
+              >
+                Read More
+                <svg
+                  class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <% }) %> <% } else { %>
+          <div class="col-span-full text-center py-12 animate-fade-in">
+            <div class="text-6xl mb-4 animate-bounce">📝</div>
+            <h3 class="text-gray-400 text-xl font-medium mb-2">No tasks yet</h3>
+            <p class="text-gray-500">Create your first task to get started!</p>
+            <div class="mt-4">
+              <div
+                class="w-16 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full animate-pulse"
+              ></div>
+            </div>
+          </div>
+          <% } %>
+        </div>
       </div>
     </div>
+
+    <style>
+      @keyframes gradient-x {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slide-up {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-gradient-x {
+        animation: gradient-x 8s ease infinite;
+      }
+      .animate-fade-in {
+        animation: fade-in 0.8s ease-out;
+      }
+      .animate-slide-up {
+        animation: slide-up 0.6s ease-out forwards;
+      }
+    </style>
   </body>
 </html>
