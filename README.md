@@ -159,6 +159,8 @@ Task-Manager-Pro/
 
 ### 🏠 Dashboard View
 *Beautiful task overview with glassmorphism cards*
+![image](https://github.com/user-attachments/assets/d884c303-ebab-4603-9f8a-db5521fc0c2f)
+mkdir -p assets/screenshots
 
 ### 📝 Task Creation
 *Intuitive form with smooth animations*
@@ -209,8 +211,8 @@ Our design is built on modern web principles:
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/suman-kumar-ghosh/)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sumanisfr)
-[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white)](#)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:suman@example.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white)](https://sumanisfr.github.io/My-Portfolio/)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sumankumarghosh94@gmail.com)
 
 ---
 
