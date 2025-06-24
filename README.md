@@ -157,16 +157,23 @@ Task-Manager-Pro/
 
 <div align="center">
 
-### 🏠 Dashboard View
+### 🏠 Dashboard View And Task Creation
 *Beautiful task overview with glassmorphism cards*
-!mkdir -p assets/[image](https://github.com/user-attachments/assets/d884c303-ebab-4603-9f8a-db5521fc0c2f)
+
+![image](https://github.com/user-attachments/assets/d884c303-ebab-4603-9f8a-db5521fc0c2f)
 
 
-### 📝 Task Creation
+### 📝 Task Reading and Delete
+*Clean, readable task display*
+
+![image](https://github.com/user-attachments/assets/9d69ac3a-cea4-4ea0-b6e3-e6f32e3c3d95)
+
+
+### 📖 Task Editing
 *Intuitive form with smooth animations*
 
-### 📖 Task Reading
-*Clean, readable task display*
+![image](https://github.com/user-attachments/assets/186ad5f4-ae7c-4219-8916-603ec8a47000)
+
 
 </div>
 
